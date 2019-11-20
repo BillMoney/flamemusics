@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+{% load materializecss %}
+{% load static %}
+{% block content %}
+    <header>
+        <nav class="z-depth-0" style="background: rgb(24, 23, 23);">
+            <div>
+                <div class="row">
+                    <div class="col s1"></div>
+                    <div class="col s10">
+                        <div class="nav-wrapper">
+                            <a href="{% url 'home' %}" class="brand-logo">
+                                <img src="{% static 'images/logo-2.png' %}" style="width: 180px; height: 30px; margin-top: 10px;" alt="">
+                            </a>
+                            <a href=" " class="sidenav-trigger " data-target="mobile-demo "><i class="material-icons ">menu</i></a>
+                            <ul class="right hide-on-med-and-down ">
+                                <li><a href="{% url 'home' %}">Home</a></li>
+                                <li><a href="{% url 'contact' %}">Contact</a></li>
+                                <li><a href="{% url 'songs' %}">Downloads</a></li>
+                                <a href="#modal1" style="height: 43px; " class="waves-effect waves-light btn modal-trigger z-depth-0 orange darken-2 waves-effect waves-notransition ">Subscribe</a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <ul class="sidenav " id="mobile-demo ">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+            <li><a href="{% url 'songs' %}">Downloads</a></li>
+            <a href="#modal1" class="btn modal-trigger z-depth-0 orange darken-2 waves-effect waves-notransition " style="margin-left: 25px; width: 240px; ">Subscribe</a>
+        </ul>
+    </header>
+    <section>
+        <div class="row ">
+            <div class="col s1 "></div>
+            <div class="col s10 ">
+                <form action="" method="GET">
+                    <input type="search" name="search" style="border: 1px solid #d2d2d2; border-radius: 2px; margin-top: 20px; text-indent: 10px; width: 40%; font-family: 'Poppins' " placeholder="Search..." id="">
+                    <i class="fas fa-search" style="color: #d2d2d2; transform: translateX(-40px);"></i>
+                    <button class="btn orange darken-4 waves-effect">reset</button>
+                </form>
+                {% if search %}
+
+                <div class="clearfix " style="padding-top: 30px; padding-bottom: 30px;">Search results for "
+                    <font class="orange-text">{{ search }}</font>"
+                </div>
+
+                {% else %}
+                {% endif %}
+                <div>
+                    <div class="row">
+                        <div class="col s12 m12 l8">
+                            <div>
+                                <div class="row">
+                                    {% for song in all_songs %}
+                                    <div class="col s12 m6 l4">
+                                        <div class="card">
+                                            <div class="card-image">
+                                                <img src="{{ song.logo.url }}" height="160px" alt="" />
+                                                <div class="overlay"></div>
+                                                <span class="card-title"></span>
+                                            </div>
+                                            <div class="card-content" onclick="window.location = ' '" style="cursor: pointer;">
+                                                {{ song.artist }} - <strong class="orange-text text-darken-4"><br>{{ song.song_title }}</strong>
+                                            </div>
+                                            <div class="card-action">
+                                                <a href="{{ song.file.url }}" class="btn z-depth-0" style="background: rgb(206, 77, 3);"><i class="material-icons">file_download</i></a>
+                                                <a href="{% url 'preview' song.id %}" class="btn right z-depth-0" style="background: rgb(32, 31, 31);"><i class="material-icons left">play_circle_outline</i> preview</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 m12 l4">
+                            <h4 class="pop-text">Popular songs</h4>
+                            <div class="underline-2"></div>
+                            <div style="padding-top: 20px;"></div>
+                            <div style="margin-bottom: 20px;">
+                                <div class="card horizontal">
+                                    <div class="card-image">
+                                        <img src="{{ lsong_1.logo.url }}" style="width: 150px; height: 100%;">
+                                    </div>
+                                    <div class="card-stacked">
+                                        <div class="card-content" style="cursor: pointer;" onclick="window.location='{{ lsong_1.file.url }}'">
+                                            {{ lsong_1.artist }} - <strong class="orange-text text-darken-4"><br>{{ lsong_1.song_title }}</strong>
+                                            <a href="{% url 'preview' lsong_1.id %}" class="btn z-depth-0 right" style="background: rgb(206, 77, 3);"><i class="material-icons">play_circle_outline</i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <div class="card horizontal">
+                                    <div class="card-image">
+                                        <img src="{{ lsong_2.logo.url }}" style="width: 150px; height: 100%;">
+                                    </div>
+                                    <div class="card-stacked">
+                                        <div class="card-content" style="cursor: pointer;" onclick="window.location='{{ lsong_2.file.url }}'">
+                                            {{ lsong_2.artist }} - <strong class="orange-text text-darken-4"><br>{{ lsong_2.song_title }}</strong>
+                                            <a href="{% url 'preview' lsong_2.id %}" class="btn z-depth-0 right" style="background: rgb(206, 77, 3);"><i class="material-icons">play_circle_outline</i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 20px;">
+                                <div class="card horizontal">
+                                    <div class="card-image">
+                                        <img src="{{ lsong_3.logo.url }}" style="width: 150px; height: 100%;">
+                                    </div>
+                                    <div class="card-stacked">
+                                        <div class="card-content" style="cursor: pointer;" onclick="window.location='{{ lsong_3.file.url }}'">
+                                            {{ lsong_3.artist }} - <strong class="orange-text text-darken-4"><br>{{ lsong_3.song_title }}</strong>
+                                            <a href="{% url 'preview' lsong_3.id %}" class="btn z-depth-0 right" style="background: rgb(206, 77, 3);"><i class="material-icons">play_circle_outline</i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 20px;">
+                                <div class="card horizontal">
+                                    <div class="card-image">
+                                        <img src="{{ lsong_4.logo.url }}" style="width: 150px; height: 100%;">
+                                    </div>
+                                    <div class="card-stacked">
+                                        <div class="card-content" style="cursor: pointer;" onclick="window.location='{{ lsong_4.file.url }}'">
+                                            {{ lsong_4.artist }} - <strong class="orange-text text-darken-4"><br>{{ lsong_4.song_title }}</strong>
+                                            <a href="{% url 'preview' lsong_4.id %}" class="btn z-depth-0 right" style="background: rgb(206, 77, 3);"><i class="material-icons">play_circle_outline</i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <h4 class="pop-text">Recent Contacts</h4>
+                            <div class="underline-2"></div>
+                            <ul class="collapsible" data-collapsible="expandable">
+                                {% for contact in all_contact %}
+                                <li>
+                                    <div class="collapsible-header">
+                                        <i class="material-icons" style="padding:4px; background: orange;">person</i> {{ contact.fullname }} - <b class="orange-text darken-4"> {{ contact.email }}</b>
+                                    </div>
+                                    <div class="collapsible-body">
+                                        <p>{{ contact.message }}</p>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s1"></div>
+        </div>
+    </section>
+
+
+    <!-- Modal Structure -->
+
+    <div id="modal1" class="modal" style="width: 500px">
+        <div class="modal-content">
+            <h6 class="modal-header" style="font-family: 'Poppins ExtraBold';">Subscribe</h6>
+            <div class="underline-2"></div>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ n_form.email|materializecss }}
+                <button type="submit" class="btn z-depth-0 orange darken-3 waves-effect">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="page-footer" style="background: rgb(31, 30, 30);;">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m8 l6">
+                    <br>
+                    <center>
+                        <img src="{% static 'images/logo-2.png' %}" alt="">
+                    </center>
+                </div>
+                <div class="col s12 m4 l6">
+                    <h5 class="white-text">Get your favourite musics here....</h5>
+                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2019. All rights reserved
+                <a class="grey-text text-lighten-4 right" href="#!">+234 032 238 329</a>
+            </div>
+        </div>
+    </footer>
+{% endblock content%}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+    <header>
+
+        <div class="navbar-fixed" style="position: fixed;">
+            <nav class="transparent z-depth-0">
+                <div>
+                    <div class="row">
+                        <div class="col s1"></div>
+                        <div class="col s10">
+                            <div style="padding-top: 10px;"></div>
+                            <div class="nav-wrapper">
+                                <a href="{% url 'home' %}" class="brand-logo">
+                                    <img src="{% static 'images/logo-2.png' %}" style="width: 180px; height: 30px; margin-top: 10px;" alt="">
+                                </a>
+                                <a href="" class="sidenav-trigger" data-target="mobile-demo"><i class="material-icons">menu</i></a>
+                                <ul class="right hide-on-med-and-down">
+                                    <li><a href="{% url 'home' %}">Home</a></li>
+                                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                                    <li><a href="{% url 'songs' %}">Downloads</a></li>
+                                    <a href="{% url 'songs' %}" class="btn z-depth-0 orange darken-2 waves-effect waves-notransition">Go to downloads</a>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+            <li><a href="{% url 'songs' %}">Downloads</a></li>
+            <a href="{% url 'songs' %}" style="margin-left: 20px;" class="btn z-depth-0 orange darken-2 waves-effect waves-notransition">Go to downloads</a>
+        </ul>
+
+    </header>
+
+    <div class="bg-1 h-100vh" style="position: fixed; width: 100%;">
+        <div class="bg-overlay">
+            <div style="height: 100vh; padding-top: -45vh; position: fixed; width: 100%;" id="home">
+                <div class="row">
+                    <div class="col s1"></div>
+                    <div class="col s10">
+                        <div class="center-align" style="transform: translateY(38vh);">
+                            <h6 class="white-text">Orchid</h6>
+                            <div class="underline"></div>
+                            <div>
+                                <h4 class="white-text typing" style="font-family: 'Poppins ExtraBold';"></h4>
+                            </div>
+                            <br>
+                            <div>
+                                <a href="{% url 'songs' %}" class="btn z-depth-0 orange darken-2 waves-effect waves-notransition">Start downloading</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

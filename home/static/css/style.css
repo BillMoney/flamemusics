@@ -1,0 +1,65 @@
+* {
+    font-family: 'Montserrat';
+}
+
+.btn {
+    border-radius: 40px;
+    text-transform: capitalize;
+    font-family: 'Poppins SemiBold';
+    padding-top: 4px;
+    height: 45px;
+}
+
+.bg-1 {
+    background: url('http://127.0.0.1:8000/static/images/105.jpg');
+    background-size: cover;
+    box-shadow: none;
+}
+
+.h-100vh {
+    height: 100vh;
+}
+
+.bg-overlay {
+    background-color: rgba(0, 0, 0, 0.69);
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    height: 100%;
+}
+
+.brand-logo {
+    font-family: 'Montserrat SemiBold';
+}
+
+.jarallax-content {
+    position: absolute;
+    z-index: -1;
+}
+
+.underline {
+    width: 4%;
+    height: 2px;
+    margin-left: 48%;
+    background: rgb(226, 116, 6);
+}
+
+.card-title {
+    font-family: 'Poppins SemiBold';
+    font-size: 12px;
+}
+
+.pop-text {
+    font-family: 'Poppins ExtraBold';
+    font-size: 16px;
+}
+
+.underline-2 {
+    width: 80px;
+    height: 2px;
+    background: rgb(255, 94, 0);
+}
+
+.collapsible-header {
+    font-family: 'Poppins';
+}
